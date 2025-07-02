@@ -1,46 +1,46 @@
-This implementation demonstrates the Factory design pattern in a FastAPI context with several key components:
-Key Features:
-1. Abstract Base Class (DataProcessor)
+# This implementation demonstrates the Factory design pattern in a FastAPI context with several key components:
+# Key Features:
+# 1. Abstract Base Class (DataProcessor)
 
-Defines the interface that all concrete processors must implement
-Ensures consistent behavior across different processor types
+# Defines the interface that all concrete processors must implement
+# Ensures consistent behavior across different processor types
 
-2. Concrete Implementations
+# 2. Concrete Implementations
 
-JSONProcessor: Handles JSON data parsing and validation
-XMLProcessor: Processes XML data and extracts structure info
-CSVProcessor: Parses CSV data and provides statistics
+# JSONProcessor: Handles JSON data parsing and validation
+# XMLProcessor: Processes XML data and extracts structure info
+# CSVProcessor: Parses CSV data and provides statistics
 
-3. Factory Class (DataProcessorFactory)
+# 3. Factory Class (DataProcessorFactory)
 
-Encapsulates the creation logic for different processors
-Uses a registry pattern to map processor types to classes
-Provides methods to create processors and list available types
+# Encapsulates the creation logic for different processors
+# Uses a registry pattern to map processor types to classes
+# Provides methods to create processors and list available types
 
-4. FastAPI Integration
+# 4. FastAPI Integration
 
-/process endpoint: Uses the factory to create processors based on request type
-/processors endpoint: Lists available processor types
-/processor/{type}/metadata endpoint: Gets metadata for specific processors
-Proper error handling with HTTP status codes
+# /process endpoint: Uses the factory to create processors based on request type
+# /processors endpoint: Lists available processor types
+# /processor/{type}/metadata endpoint: Gets metadata for specific processors
+# Proper error handling with HTTP status codes
 
-Usage Examples:
-To test this API, you can send POST requests to /process:
-json{
-  "data": "{\"name\": \"John\", \"age\": 30}",
-  "processor_type": "json"
-}
-The factory pattern provides several benefits here:
+# Usage Examples:
+# To test this API, you can send POST requests to /process:
+# json{
+#   "data": "{\"name\": \"John\", \"age\": 30}",
+#   "processor_type": "json"
+# }
+# The factory pattern provides several benefits here:
 
-Extensibility: Easy to add new processor types without modifying existing code
-Decoupling: Client code doesn't need to know about specific processor classes
-Centralized Creation: All processor creation logic is in one place
-Type Safety: Using enums ensures only valid processor types are accepted
+# Extensibility: Easy to add new processor types without modifying existing code
+# Decoupling: Client code doesn't need to know about specific processor classes
+# Centralized Creation: All processor creation logic is in one place
+# Type Safety: Using enums ensures only valid processor types are accepted
 
-To run this, save the code and execute:
-bashpip install fastapi uvicorn
-python your_file.py
-Then visit http://localhost:8000/docs to see the interactive API documentation.
+# To run this, save the code and execute:
+# bashpip install fastapi uvicorn
+# python your_file.py
+# Then visit http://localhost:8000/docs to see the interactive API documentation.
 
 ## IMPLEMENTATION BELOW ##
 
