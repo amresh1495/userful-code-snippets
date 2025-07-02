@@ -1,3 +1,45 @@
+# This implementation demonstrates the Observer pattern in a FastAPI context. Here's what it includes:
+# Key Components:
+# Abstract Classes:
+
+# Observer: Defines the interface for observers with an update method
+# Subject: Manages observers and handles notifications
+
+# Concrete Observers:
+
+# EmailNotificationObserver: Simulates email notifications
+# LoggingObserver: Logs events with timestamps
+# SlackNotificationObserver: Simulates Slack notifications
+# AnalyticsObserver: Tracks user events for analytics
+
+# Subject Implementation:
+
+# UserService: Manages users and notifies observers of CRUD operations
+
+# Usage Example:
+# bash# Start the server
+# uvicorn main:app --reload
+
+# # Test the API
+# curl -X POST "http://localhost:8000/users" \
+#      -H "Content-Type: application/json" \
+#      -d '{"name": "John Doe", "email": "john@example.com"}'
+# When you create, update, or delete a user, you'll see all observers react in the console:
+# 📧 EMAIL: USER_CREATED - Sending email notification
+# 📝 LOG: [2024-01-15T10:30:45] USER_CREATED  
+# 💬 SLACK: USER_CREATED - Sending Slack notification
+# 📊 ANALYTICS: Tracking event 'USER_CREATED'
+# Key Benefits:
+
+# Loose Coupling: Observers don't need to know about each other
+# Dynamic Management: You can attach/detach observers at runtime
+# Extensibility: Easy to add new notification types
+# Separation of Concerns: Business logic stays separate from notifications
+
+# The pattern is particularly useful in REST APIs for cross-cutting concerns like logging, notifications, caching invalidation, and analytics tracking.
+
+### IMPLEMENTATION BELOW ###
+
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any
 from fastapi import FastAPI, HTTPException
